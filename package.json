@@ -1,0 +1,44 @@
+{
+	"name": "create-ether-dapp",
+	"description": "A template for building Full-Stack Blockchain Dapps using Next.js (React), TypeScript, Tailwind CSS, Hardhat, Solidity, and many more!",
+	"version": "1.1.65",
+	"author": "Adrian Delgado",
+	"license": "MIT",
+	"bin": "./bin/index.js",
+	"main": "./bin/index.js",
+	"repository": {
+		"name": "adriandelgg/create-ether-dapp",
+		"type": "git",
+		"url": "https://github.com/adriandelgg/create-ether-dapp.git"
+	},
+	"bugs": {
+		"url": "https://github.com/adriandelgg/create-ether-dapp/issues"
+	},
+	"homepage": "https://github.com/adriandelgg/create-ether-dapp#readme",
+	"scripts": {
+		"dev": "concurrently \"if exist hardhat (cd hardhat && npx hardhat node)\" \"if exist frontend (cd frontend && yarn dev)\" \"if exist backend (cd backend && yarn dev)\"",
+		"deploy": "cd hardhat && npx hardhat run scripts/deploy.ts --network localhost",
+		"hardhat": "cd hardhat && npx hardhat node",
+		"frontend": "cd frontend && yarn dev",
+		"backend": "cd backend && yarn dev",
+		"installdeps": "concurrently \"if exist backend (cd backend && yarn install)\" \"if exist frontend (cd frontend && yarn install)\" \"if exist hardhat (cd hardhat && yarn install)\"",
+		"postinstall": "concurrently \"if exist backend (cd backend && yarn install)\" \"if exist frontend (cd frontend && yarn install)\" \"if exist hardhat (cd hardhat && yarn install)\" \"powershell -Command \"Get-ChildItem -Recurse -Filter '.example.env' | Rename-Item -NewName { $_.Name -replace '.example.env','.env' }\"\""
+},
+
+	"devDependencies": {
+		"concurrently": "^6.2.1",
+		"hardhat": "^2.8.4",
+		"husky": "^7.0.4"
+	},
+	"keywords": [
+		"ethers",
+		"ethereum",
+		"react",
+		"web3",
+		"typescript",
+		"hardhat"
+	],
+	"dependencies": {
+		"web3modal": "^1.9.5"
+	}
+}
